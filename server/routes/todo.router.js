@@ -7,7 +7,7 @@ const Pool = pg.Pool;
 
 const pool = new Pool({
   database: 'weekend-to-do-app',
-  host: 'localhost'
+  host: 'LocalHost'
 });
 
 pool.on('connect', () => {
@@ -18,14 +18,27 @@ pool.on('connect', () => {
     console.log('Something with postgresql really broke. It broke hard.', error);
   })
 
+//////////////////////////////////////////////
 
 
-
-
-
-
-
-
+router.get('/', (req, res) => {
+    console.log('GET /task');
+    let queryText = `
+      SELECT * FROM "weekend-to-do-app"
+        ORDER BY "id";
+    `;
+    pool.query(queryText)
+      .then((dbResult) => {
+        console.log(dbResult.rows);
+        res.send(dbResult.rows);
+      })
+      .catch((dbError) => {
+        console.log('error in GET /songs db request:', dbError);
+        res.sendStatus(500);
+      })
+  });
+  
+  
 
 
 

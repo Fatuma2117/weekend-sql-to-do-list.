@@ -11,7 +11,7 @@ To do list:
 - routes
 
 
-GET- readTask()
+GET- getTasks()
     - should have a Complete and Delete button after new task is added
         - when 'complete' is clicked it should change css
         - The complete option should be 'checked off'??????
