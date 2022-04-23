@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-// Require the router object for songs:
+
 let todoRouter = require('./routes/todo.router');
 
 const app = express();

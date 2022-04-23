@@ -14,7 +14,7 @@ pool.on('connect', () => {
     console.log('Yay! We are talking to our postgresql database!');
   })
   
-  pool.on('error', (error) => {
+pool.on('error', (error) => {
     console.log('Something with postgresql really broke. It broke hard.', error);
   })
 
@@ -33,7 +33,7 @@ router.get('/', (req, res) => {
         res.send(dbResult.rows);
       })
       .catch((dbError) => {
-        console.log('error in GET /songs db request:', dbError);
+        console.log('error in GET /task db request:', dbError);
         res.sendStatus(500);
       })
   });
