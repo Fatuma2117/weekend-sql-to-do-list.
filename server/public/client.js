@@ -19,6 +19,8 @@ function getTask() {
           <td>${task.priority}</td>
             <td>${task.notes}</td>
             <td>${task.complete_by_date}</td>
+            <td>${task.Done}</td>
+
             <td><button class="deleteButton">DELETE</button></td>
             <td><button class="completeButton">COMPLETE</button></td>
           </tr>

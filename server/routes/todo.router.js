@@ -67,10 +67,11 @@ router.put( '/:taskId', ( req, res )=>{
     console.log( 'task PUT');
     let sqlQuery = 
         `UPDATE "weekend-to-do-app"
-             SET complete_by_date='Done'
-                WHERE id=$1;`;
+             SET "complete_by_date"='DONE'
+                WHERE "id"=$1;`;
     let sqlValues =
         [ req.params.id ];
+    console.log(req.params.id)
     pool.query(sqlQuery, sqlValues )
     .then( (results)=>{
         res.sendStatus( 200 );
