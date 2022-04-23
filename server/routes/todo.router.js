@@ -58,7 +58,7 @@ router.post('/', (req, res) => {
             res.sendStatus(201);
         })
         .catch((dbError) => {
-            console.log('error in POST /task db request:');
+            console.log('error in POST');
             console.log(dbError);
         })
 });
@@ -77,7 +77,7 @@ router.put( '/:taskId', ( req, res )=>{
     .then( (results)=>{
         res.sendStatus( 200 );
     }).catch( ( err )=>{
-        console.log( 'error with update:', err );
+        console.log( 'error with update:' );
         res.sendStatus( 500 );
     })
 })
@@ -94,7 +94,7 @@ router.delete('/:taskId', (req, res) => {
         res.sendStatus(200);
       })
       .catch((dbError) => {
-        console.log('error in DELETE /books');
+        console.log('error in DELETE');
         res.sendStatus(500);
       })
   })

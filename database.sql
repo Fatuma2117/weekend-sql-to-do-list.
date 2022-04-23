@@ -5,3 +5,6 @@ CREATE TABLE "weekend-to-do-app" (
 	"notes" VARCHAR(200),
 	"complete_by_date" VARCHAR(200)
 );
+
+ALTER TABLE "weekend-to-do-app"
+ADD "Done"  BOOLEAN DEFAULT FALSE;
