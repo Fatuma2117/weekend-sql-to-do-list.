@@ -1,6 +1,7 @@
 To do list:
 - set up database "weekend-to-do-app"
-    - should update after new task added and completed
+    - should update after new task added
+         and completed
     -Deleting a Task should remove it both from the front end as well as the Database.
 
 - set up html, jQuery
