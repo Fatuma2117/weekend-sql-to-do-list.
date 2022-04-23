@@ -54,7 +54,7 @@ function postTask() {
 
 function updateTask() {
     let id = $(this).closest('tr').data('id');
-    $("id").addClass(".done")
+    $(id).addClass(".done")
     console.log( 'in updateTask', id);
     $.ajax({
         type: 'PUT',

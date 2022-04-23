@@ -63,14 +63,14 @@ router.post('/', (req, res) => {
         })
 });
 
-router.put( '/task/:id', ( req, res )=>{
+router.put( '/:taskId', ( req, res )=>{
     console.log( 'task PUT');
     let sqlQuery = 
-        `UPDATE "week-end-to-do-app"
-             SET priority= $1 
-                WHERE id=$2;`;
+        `UPDATE "weekend-to-do-app"
+             SET complete_by_date='Done'
+                WHERE id=$1;`;
     let sqlValues =
-        [ 'Done', req.params.id ];
+        [ req.params.id ];
     pool.query(sqlQuery, sqlValues )
     .then( (results)=>{
         res.sendStatus( 200 );
