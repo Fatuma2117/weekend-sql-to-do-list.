@@ -23,13 +23,13 @@ pool.on('error', (error) => {
 
 router.get('/', (req, res) => {
     console.log('GET /task');
-    let queryText = `
+    let sqlQuery = `
       SELECT * FROM "weekend-to-do-app"
         ORDER BY "id";
     `;
-    pool.query(queryText)
+    pool.query(sqlQuery)
         .then((dbResult) => {
-            console.log(dbResult.rows);
+            // console.log(dbResult.rows);
             res.send(dbResult.rows);
         })
         .catch((dbError) => {
@@ -40,8 +40,8 @@ router.get('/', (req, res) => {
 
 
 router.post('/', (req, res) => {
-    console.log('POST /task');
-    console.log( req.body);
+    // console.log('POST /task');
+    // console.log( req.body);
     let sqlQuery = `
       INSERT INTO "weekend-to-do-app" ( "task","priority", "notes", "complete_by_date")
         VALUES 
@@ -63,7 +63,22 @@ router.post('/', (req, res) => {
         })
 });
 
-
+router.put( '/task/:id', ( req, res )=>{
+    console.log( 'task PUT');
+    let sqlQuery = 
+        `UPDATE "week-end-to-do-app"
+             SET priority= $1 
+                WHERE id=$2;`;
+    let sqlValues =
+        [ 'Done', req.params.id ];
+    pool.query(sqlQuery, sqlValues )
+    .then( (results)=>{
+        res.sendStatus( 200 );
+    }).catch( ( err )=>{
+        console.log( 'error with update:', err );
+        res.sendStatus( 500 );
+    })
+})
 
 
 

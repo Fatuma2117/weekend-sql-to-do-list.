@@ -2,8 +2,7 @@ $(document).ready(onReady);
 
 function onReady() {
     $('#addTask').on('click', postTask)
-    $(documet).on('click','.deleteButton',)
-
+    $("#taskTableBody").on('click','.completeButton', updateTask)
 }
 
 function getTask() {
@@ -12,15 +11,14 @@ function getTask() {
         method: 'GET',
         url: '/task'
     }).then(function (response) {
-        console.log("GET /task response", response);
+        // console.log("GET /task response", response);
         for (let task of response) {
             $('#taskTableBody').append(`
-          <tr data-id=${task.id} >
+          <tr data-id=${task.id}>
           <td>${task.task}</td>
           <td>${task.priority}</td>
             <td>${task.notes}</td>
             <td>${task.complete_by_date}</td>
-            
             <td><button class="deleteButton">DELETE</button></td>
             <td><button class="completeButton">COMPLETE</button></td>
           </tr>
@@ -52,15 +50,26 @@ function postTask() {
     }).catch(function (error) {
         console.log(error);
     })
-
-
-
-
-
-
 }
 
 function updateTask() {
+    let id = $(this).closest('tr').data('id');
+    $("id").addClass(".done")
+    console.log( 'in updateTask', id);
+    $.ajax({
+        type: 'PUT',
+        url: `/task/${id}`
+    }).then( function( response ){
+        console.log( 'back from PUT:', response );
+        getTask();
+    }).catch( function (err){
+        console.log('error on client-side')
+    })
+
+
+
+
+
 
 }
 
