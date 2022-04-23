@@ -1,5 +1,16 @@
 .done{
     background-color: aquamarine;
    text-decoration: line-through;
+   color: red;
       
+}
+
+body{
+    background-color: beige;
+    font-family: "Times New Roman", Times, serif;
+    font-style: oblique;
+}
+
+#addtask{
+    background-color: aquamarine;
 }

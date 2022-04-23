@@ -14,7 +14,7 @@ To do list:
 
  ✓GET- getTasks()
      ✓ should have a Complete and Delete button after new task is added
-        - when 'complete' is clicked it should change css
+       ✓ - when 'complete' is clicked it should change css
        
 
  ✓POST - changeTask()
@@ -22,10 +22,11 @@ To do list:
      ✓ send the object in ajax, 
      ✓ set route - query and values from database
 
-UPDATE - updateTask()
-    - change completed_by_date = 'done'
+✓UPDATE - updateTask()
+    ✓- change completed_by_date = 'done'
 
-DELETE- deleteTask()
+✓DELETE- deleteTask()
+
 
 CSS Styling
 - Download bootstrap

@@ -3,7 +3,7 @@ $(document).ready(onReady);
 function onReady() {
     $('#addTask').on('click', postTask)
     $("#taskTableBody").on('click','.deleteButton', deleteTask)
-    $("#taskTableBody").on('click','.completeButton', updateTask)
+    $(document).on('click','.completeButton', updateTask)
 }
 
 function getTask() {
@@ -14,8 +14,9 @@ function getTask() {
     }).then(function (response) {
         // console.log("GET /task response", response);
         for (let task of response) {
+        if(task.Done === true ){
             $('#taskTableBody').append(`
-          <tr data-id=${task.id}>
+          <tr class= done data-id=${task.id}>
           <td>${task.task}</td>
           <td>${task.priority}</td>
             <td>${task.notes}</td>
@@ -25,7 +26,28 @@ function getTask() {
             <td><button class="deleteButton">DELETE</button></td>
             <td><button class="completeButton">COMPLETE</button></td>
           </tr>
-        `);
+        
+        `)} else {
+            $('#taskTableBody').append(`
+            <tr data-id=${task.id}>
+            <td>${task.task}</td>
+            <td>${task.priority}</td>
+              <td>${task.notes}</td>
+              <td>${task.complete_by_date}</td>
+              <td data-done=${task.Done}>${task.Done}</td>
+  
+              <td><button class="deleteButton">DELETE</button></td>
+              <td><button class="completeButton">COMPLETE</button></td>
+            </tr>
+          
+          `)
+        }
+        
+        
+        
+        
+        
+        ;
         }
     }).catch(function (error) {
         console.log(error);
