@@ -2,6 +2,7 @@ $(document).ready(onReady);
 
 function onReady() {
     $('#addTask').on('click', postTask)
+    $("#taskTableBody").on('click','.deleteButton', deleteTask)
     $("#taskTableBody").on('click','.completeButton', updateTask)
 }
 
@@ -19,7 +20,7 @@ function getTask() {
           <td>${task.priority}</td>
             <td>${task.notes}</td>
             <td>${task.complete_by_date}</td>
-            <td>${task.Done}</td>
+            <td data-done=${task.Done}>${task.Done}</td>
 
             <td><button class="deleteButton">DELETE</button></td>
             <td><button class="completeButton">COMPLETE</button></td>
@@ -56,7 +57,11 @@ function postTask() {
 
 function updateTask() {
     let id = $(this).closest('tr').data('id');
-    $(id).addClass(".done")
+    let done = $(this).closest('tr').data('done');
+    if (done === true) {
+        $(this).addClass('.done')
+    } 
+    
     console.log( 'in updateTask', id);
     $.ajax({
         type: 'PUT',
@@ -67,14 +72,18 @@ function updateTask() {
     }).catch( function (err){
         console.log('error on client-side')
     })
-
-
-
-
-
-
 }
 
 function deleteTask() {
-
+    let deleteTask= $(this).closest('tr').data('id');
+    $.ajax({
+      type: 'DELETE',
+      url: `/task/${deleteTask}`
+    }).then(function(response) {
+      console.log(response);
+        getTask();
+  
+    }).catch(function(error){
+      console.log('error in DELETE', error);
+    });
 }

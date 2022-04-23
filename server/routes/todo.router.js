@@ -82,7 +82,22 @@ router.put( '/:taskId', ( req, res )=>{
     })
 })
 
-
+router.delete('/:taskId', (req, res) => {
+    let deleteTask = req.params.taskId;
+    let sqlQuery = `
+      DELETE FROM "weekend-to-do-app"
+        WHERE "id"=$1;
+    `
+    let sqlValues = [deleteTask];
+    pool.query(sqlQuery, sqlValues)
+      .then((dbResult) => {
+        res.sendStatus(200);
+      })
+      .catch((dbError) => {
+        console.log('error in DELETE /books');
+        res.sendStatus(500);
+      })
+  })
 
 
 
