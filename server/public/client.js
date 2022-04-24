@@ -24,7 +24,7 @@ function getTask() {
             <td data-done=${task.Done}>${task.Done}</td>
 
             <td><button class="deleteButton">DELETE</button></td>
-            <td><button class="completeButton">COMPLETE</button></td>
+            <td><button  class="completeButton">COMPLETE</button></td>
           </tr>
         
         `)} else {
