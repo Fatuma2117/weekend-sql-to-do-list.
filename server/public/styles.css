@@ -13,8 +13,8 @@ body{
     font-family: "Times New Roman", Times, serif;
     font-style: oblique;
     text-align: center;
-    border: 2px solid #641723;
-    border-radius: 1rem;
+    /* border: 2px solid #641723;
+    border-radius: 1rem; */
 }
 
 #addtask{
@@ -27,6 +27,4 @@ body{
   
 }
 
-#taskTableBody{
-    text-align: ;
-}
+
