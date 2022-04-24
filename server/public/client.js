@@ -2,8 +2,8 @@ $(document).ready(onReady);
 
 function onReady() {
     $('#addTask').on('click', postTask)
-    $("#taskTableBody").on('click','.deleteButton', deleteTask)
-    $(document).on('click','.completeButton', updateTask)
+    $("#taskTableBody").on('click', '.deleteButton', deleteTask)
+    $(document).on('click', '.completeButton', updateTask)
 }
 
 function getTask() {
@@ -14,8 +14,8 @@ function getTask() {
     }).then(function (response) {
         // console.log("GET /task response", response);
         for (let task of response) {
-        if(task.Done === true ){
-            $('#taskTableBody').append(`
+            if (task.Done === true) {
+                $('#taskTableBody').append(`
           <tr class= done data-id=${task.id}>
           <td>${task.task}</td>
           <td>${task.priority}</td>
@@ -27,8 +27,9 @@ function getTask() {
             <td><button  class="completeButton">COMPLETE</button></td>
           </tr>
         
-        `)} else {
-            $('#taskTableBody').append(`
+        `)
+            } else {
+                $('#taskTableBody').append(`
             <tr data-id=${task.id}>
             <td>${task.task}</td>
             <td>${task.priority}</td>
@@ -41,13 +42,13 @@ function getTask() {
             </tr>
           
           `)
-        }
-        
-        
-        
-        
-        
-        ;
+            }
+
+
+
+
+
+            ;
         }
     }).catch(function (error) {
         console.log(error);
@@ -82,30 +83,30 @@ function updateTask() {
     let done = $(this).closest('tr').data('done');
     if (done === true) {
         $(this).addClass('.done')
-    } 
-    
-    console.log( 'in updateTask', id);
+    }
+
+    console.log('in updateTask', id);
     $.ajax({
         type: 'PUT',
         url: `/task/${id}`
-    }).then( function( response ){
-        console.log( 'back from PUT:', response );
+    }).then(function (response) {
+        console.log('back from PUT:', response);
         getTask();
-    }).catch( function (err){
+    }).catch(function (err) {
         console.log('error on client-side')
     })
 }
 
 function deleteTask() {
-    let deleteTask= $(this).closest('tr').data('id');
+    let deleteTask = $(this).closest('tr').data('id');
     $.ajax({
-      type: 'DELETE',
-      url: `/task/${deleteTask}`
-    }).then(function(response) {
-      console.log(response);
+        type: 'DELETE',
+        url: `/task/${deleteTask}`
+    }).then(function (response) {
+        console.log(response);
         getTask();
-  
-    }).catch(function(error){
-      console.log('error in DELETE', error);
+
+    }).catch(function (error) {
+        console.log('error in DELETE', error);
     });
 }

@@ -63,23 +63,23 @@ router.post('/', (req, res) => {
         })
 });
 
-router.put( '/:taskId', ( req, res )=>{
-    console.log( 'task PUT');
-    let sqlQuery = 
+router.put('/:taskId', (req, res) => {
+    console.log('task PUT');
+    let sqlQuery =
         `UPDATE "weekend-to-do-app"
              SET "Done"=$1
                 WHERE "id"=$2;`;
-    let sqlValues = [ 
+    let sqlValues = [
         true,
         req.params.taskId];
     console.log(req.params.taskId)
-    pool.query(sqlQuery, sqlValues )
-    .then( (results)=>{
-        res.sendStatus( 200 );
-    }).catch( ( err )=>{
-        console.log( 'error with update:' );
-        res.sendStatus( 500 );
-    })
+    pool.query(sqlQuery, sqlValues)
+        .then((results) => {
+            res.sendStatus(200);
+        }).catch((err) => {
+            console.log('error with update:');
+            res.sendStatus(500);
+        })
 })
 
 router.delete('/:taskId', (req, res) => {
@@ -90,14 +90,14 @@ router.delete('/:taskId', (req, res) => {
     `
     let sqlValues = [deleteTask];
     pool.query(sqlQuery, sqlValues)
-      .then((dbResult) => {
-        res.sendStatus(200);
-      })
-      .catch((dbError) => {
-        console.log('error in DELETE');
-        res.sendStatus(500);
-      })
-  })
+        .then((dbResult) => {
+            res.sendStatus(200);
+        })
+        .catch((dbError) => {
+            console.log('error in DELETE');
+            res.sendStatus(500);
+        })
+})
 
 
 

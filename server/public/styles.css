@@ -1,14 +1,11 @@
-
-
-
-.done{
+.done {
     background-color: rgb(174, 234, 214);
-   text-decoration: line-through;
-   color: red;
-      
+    text-decoration: line-through;
+    color: red;
+
 }
 
-body{
+body {
     background-color: beige;
     font-family: "Times New Roman", Times, serif;
     font-style: oblique;
@@ -16,14 +13,12 @@ body{
 
 }
 
-#addtask{
+#addtask {
     background-color: rgb(174, 234, 214);
     text-align: center;
 }
 
-#taskTable{
+#taskTable {
     text-align: center;
-  
+
 }
-
-
