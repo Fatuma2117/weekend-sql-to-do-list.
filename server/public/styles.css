@@ -1,5 +1,8 @@
+
+
+
 .done{
-    background-color: aquamarine;
+    background-color: rgb(174, 234, 214);
    text-decoration: line-through;
    color: red;
       
@@ -9,8 +12,17 @@ body{
     background-color: beige;
     font-family: "Times New Roman", Times, serif;
     font-style: oblique;
+    text-align: center;
 }
 
 #addtask{
-    background-color: aquamarine;
+    background-color: rgb(174, 234, 214);
+}
+
+#taskTable{
+    text-align: center;
+}
+
+#taskTableBody{
+    text-align: center;
 }
